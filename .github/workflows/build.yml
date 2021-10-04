@@ -30,10 +30,18 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - uses: actions-rs/cargo@v1
+      - name: Build
+        uses: actions-rs/cargo@v1
         with:
           command: build
           args: --release --all-features        
-      - uses: actions-rs/cargo@v1
+      - name: Test
+        uses: actions-rs/cargo@v1
         with:
           command: test
+      - name: Integration Testing
+        run: |
+          ./target/release/rust-rest-actix &
+          sleep 1
+          if [[ "Hello world" != `curl http://localhost:8080` ]]; then exit 1; fi
+          pkill rust-rest-actix
