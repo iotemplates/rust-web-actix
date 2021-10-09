@@ -51,7 +51,7 @@ jobs:
           command: test
       - name: Integration Testing
         run: |
-          ./target/release/rust-rest-actix &
+          ./target/release/rust-web-actix &
           sleep 1
           if [[ "Hello world" != `curl http://localhost:8080` ]]; then exit 1; fi
-          pkill rust-rest-actix
+          pkill rust-web-actix

@@ -1,7 +1,7 @@
-* Rust Rest API Template (using actix)
+* Rust Web Template (using actix)
 
 
 [[../../actions/workflows/build.yml/badge.svg]]
 
 
-A simple rust rest api using actix.
+A simple webapp using actix.
